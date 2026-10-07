@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>骨粗鬆症 臨床基礎クイズ｜新人PT向け勉強会 復習テスト</title>
+<style>
+  :root{
+    color-scheme: light;
+    --navy:#0f2c4d;
+    --navy2:#17406e;
+    --teal:#0d7d78;
+    --teal2:#11a09a;
+    --ink:#1e293b;
+    --ink2:#475569;
+    --muted:#64748b;
+    --line:#e2e8f0;
+    --bg1:#f8fafc;
+    --bg2:#effcfb;
+    --bg3:#eef4fd;
+    --ok:#0d7d78;
+    --ng:#e11d48;
+    --warn:#f59e0b;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:linear-gradient(140deg,var(--bg1) 0%,var(--bg2) 45%,var(--bg3) 100%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,"Noto Sans JP",sans-serif;
+    font-size:15px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:28px 16px 64px}
+  .hidden{display:none !important}
+
+  /* ---------- shared cards ---------- */
+  .card{background:#fff;border-radius:18px;box-shadow:0 6px 24px rgba(15,44,77,.07),0 1px 3px rgba(15,44,77,.06);overflow:hidden}
+  .card+.card{margin-top:18px}
+  .pad{padding:22px}
+  @media(min-width:640px){.pad{padding:28px}}
+
+  /* ---------- start ---------- */
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,var(--teal) 100%);color:#fff;padding:40px 24px 44px}
+  @media(min-width:640px){.hero{padding:52px 40px}}
+  .badge-top{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.16);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;letter-spacing:.03em;margin-bottom:18px}
+  .hero h1{margin:0 0 12px;font-size:26px;line-height:1.35;font-weight:800}
+  @media(min-width:640px){.hero h1{font-size:34px}}
+  .hero h1 .accent{color:#8fe3dd}
+  .hero p{margin:0;font-size:14px;line-height:1.85;color:#cfe0f2;max-width:34em}
+  @media(min-width:640px){.hero p{font-size:15px}}
+
+  .sec-label{font-size:11px;font-weight:800;color:var(--muted);letter-spacing:.06em;margin:0 0 10px}
+  .grid2{display:grid;gap:9px}
+  @media(min-width:640px){.grid2{grid-template-columns:1fr 1fr}}
+  .topic{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:#f8fafc;border-radius:12px;padding:9px 11px}
+  .topic .n{flex:0 0 auto;width:24px;height:24px;border-radius:7px;background:var(--navy);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .topic .t{font-size:12.5px;line-height:1.5;color:var(--ink2)}
+
+  .note{border:1px solid var(--line);background:#f8fafc;border-radius:14px;padding:16px 18px;margin-top:20px}
+  .note h3{margin:0 0 10px;font-size:12.5px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:7px}
+  .note ul{margin:0;padding:0;list-style:none}
+  .note li{display:flex;gap:8px;font-size:13.5px;line-height:1.8;color:var(--ink2)}
+  .note li+li{margin-top:5px}
+  .note li .b{color:var(--teal);font-weight:800;flex:0 0 auto}
+
+  .btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;border:0;cursor:pointer;
+    background:linear-gradient(90deg,var(--teal) 0%,var(--navy2) 100%);color:#fff;font-weight:800;font-size:16px;
+    padding:16px;border-radius:14px;box-shadow:0 8px 22px rgba(15,44,77,.18);transition:transform .12s ease,filter .12s ease;
+    font-family:inherit;margin-top:22px}
+  .btn:hover{filter:brightness(1.08)}
+  .btn:active{transform:scale(.99)}
+  .fineprint{margin:16px 0 0;text-align:center;font-size:11px;line-height:1.7;color:#94a3b8}
+
+  /* ---------- progress ---------- */
+  .prog{margin-bottom:16px}
+  .prog .row{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:7px}
+  .prog .lab{font-size:13px;font-weight:800;color:var(--ink2)}
+  .prog .lab b{font-size:23px;color:var(--teal);margin:0 2px}
+  .prog .lab span{color:#94a3b8;font-weight:600;font-size:13px}
+  .prog .rest{font-size:12px;color:var(--muted)}
+  .bar{height:8px;border-radius:999px;background:#dbe3ec;overflow:hidden}
+  .bar>div{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--teal2),var(--navy2));transition:width .45s ease}
+
+  /* ---------- vignette ---------- */
+  .vhead{background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 100%);color:#fff;padding:13px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+  .vhead .cat{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);border-radius:999px;padding:4px 11px;font-size:12px;font-weight:700}
+  .vhead .src{margin-left:auto;background:rgba(255,255,255,.15);border-radius:999px;padding:4px 10px;font-size:11px;font-weight:700}
+  .vbody{padding:16px 20px}
+  .patient{display:inline-flex;align-items:center;gap:6px;border:1px solid #c7ddf5;background:#eff6ff;color:var(--navy);border-radius:9px;padding:4px 10px;font-size:12px;font-weight:800;margin-bottom:10px}
+  .vtext{margin:0;font-size:14.5px;line-height:1.85;color:var(--ink)}
+
+  /* ---------- question ---------- */
+  .stem{margin:0 0 18px;font-size:16px;font-weight:800;line-height:1.75}
+  @media(min-width:640px){.stem{font-size:17px}}
+  .opt{display:flex;gap:12px;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:13px;
+    padding:13px 15px;cursor:pointer;font-family:inherit;transition:border-color .12s,background .12s,transform .08s;margin-bottom:10px}
+  .opt:last-child{margin-bottom:0}
+  .opt:not(.locked):hover{border-color:#5ec8c2;background:#f2fdfc}
+  .opt:not(.locked):active{transform:scale(.996)}
+  .opt .k{flex:0 0 auto;width:28px;height:28px;border-radius:9px;background:#f1f5f9;color:var(--ink2);
+    font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .opt .txt{font-size:14.5px;line-height:1.8;padding-top:1px}
+  .opt.locked{cursor:default}
+  .opt.correct{border-color:var(--teal);background:#effcfb;box-shadow:0 0 0 3px rgba(13,125,120,.14)}
+  .opt.correct .k{background:var(--teal);color:#fff}
+  .opt.wrong{border-color:#fda4af;background:#fff1f2}
+  .opt.wrong .k{background:var(--ng);color:#fff}
+  .opt.dim{opacity:.55;background:#f8fafc}
+
+  /* ---------- explanation ---------- */
+  .exhead{display:flex;align-items:center;gap:12px;padding:15px 20px;color:#fff}
+  .exhead.ok{background:linear-gradient(90deg,var(--ok),#15a19b)}
+  .exhead.ng{background:linear-gradient(90deg,#be123c,#ef4444)}
+  .exhead .icon{font-size:22px;line-height:1}
+  .exhead .ttl{font-size:18px;font-weight:800;line-height:1.2}
+  .exhead .sub{font-size:11.5px;opacity:.92;margin-top:3px}
+  .keypoint{border:1px solid #fcd34d;background:#fffbeb;border-radius:12px;padding:13px 16px}
+  .keypoint .lbl{font-size:10.5px;font-weight:800;letter-spacing:.07em;color:#b45309;margin-bottom:6px}
+  .keypoint p{margin:0;font-size:14px;font-weight:700;line-height:1.8}
+  .block{margin-top:22px}
+  .block .lbl{font-size:11px;font-weight:800;letter-spacing:.05em;color:var(--muted);margin-bottom:8px}
+  .block p.body{margin:0;font-size:14px;line-height:1.95;color:#334155}
+  .onote{display:flex;gap:10px;border:1px solid var(--line);background:#f8fafc;border-radius:12px;padding:12px 15px;margin-bottom:10px}
+  .onote:last-child{margin-bottom:0}
+  .onote.is-ans{border-color:#7fd3cd;background:#effcfb}
+  .onote .k{flex:0 0 auto;width:24px;height:24px;border-radius:7px;background:#cbd5e1;color:#334155;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .onote.is-ans .k{background:var(--teal);color:#fff}
+  .onote p{margin:0;font-size:13px;line-height:1.85;color:#334155}
+  .srcbox{border:1px solid var(--line);background:#fff;border-radius:12px;padding:12px 15px;margin-top:22px}
+  .srcbox .lbl{font-size:10.5px;font-weight:800;letter-spacing:.05em;color:var(--muted);margin-bottom:5px}
+  .srcbox p{margin:0;font-size:12.5px;line-height:1.75;color:var(--ink2)}
+
+  /* ---------- result ---------- */
+  .rhead{background:linear-gradient(140deg,var(--teal) 0%,var(--navy) 100%);color:#fff;padding:38px 24px;text-align:center}
+  .rhead .cap{font-size:12.5px;font-weight:700;letter-spacing:.08em;opacity:.8;margin-bottom:6px}
+  .rhead .score{font-size:56px;font-weight:800;line-height:1}
+  .rhead .score span{font-size:26px;font-weight:600;opacity:.72}
+  .rhead .ttl{margin-top:16px;font-size:19px;font-weight:800}
+  .rrow{display:flex;align-items:center;gap:11px;border:1px solid var(--line);background:#f8fafc;border-radius:12px;padding:9px 12px;margin-bottom:8px}
+  .rrow:last-child{margin-bottom:0}
+  .rrow .mk{flex:0 0 auto;font-size:17px;line-height:1}
+  .rrow .qn{flex:0 0 auto;width:30px;font-size:11.5px;font-weight:800;color:#94a3b8}
+  .rrow .ct{flex:1 1 auto;font-size:12.5px;line-height:1.5;color:var(--ink2);min-width:0}
+  .rrow .sl{flex:0 0 auto;font-size:11px;color:#94a3b8}
+  @media(max-width:520px){.rrow .sl{display:none}}
+  .cat-sum{border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+  .cat-sum .nm{flex:1 1 auto;font-size:13px;font-weight:700;color:var(--ink)}
+  .cat-sum .sc{font-size:13px;font-weight:800}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ START ============ -->
+  <section id="screen-start">
+    <div class="card">
+      <div class="hero">
+        <div class="badge-top">勉強会 復習テスト</div>
+        <h1>骨粗鬆症<br><span class="accent">臨床基礎クイズ</span></h1>
+        <p>勉強会資料「理学療法士が知っておきたい骨粗鬆症」（全15スライド）の内容を、短い臨床場面に置き換えた全12問。診断基準・危険因子・運動療法のエビデンス・転倒予防・FLS まで。</p>
+      </div>
+      <div class="pad">
+        <p class="sec-label">出題範囲</p>
+        <div class="grid2" id="topic-list"></div>
+
+        <div class="note">
+          <h3>⚑ このクイズの設計</h3>
+          <ul>
+            <li><span class="b">・</span><span>臨床経験2〜3年目を想定。用語や数値を覚えているだけでは解けません</span></li>
+            <li><span class="b">・</span><span>「明らかに違う選択肢」は排除。どれも一理ある4択です</span></li>
+            <li><span class="b">・</span><span>数値は暗記ではなく<b>解釈</b>を問います（RR 1.14 をどう読むか、YAM 80% と 70% の使い分けなど）</span></li>
+            <li><span class="b">・</span><span>解説には資料の該当スライドを明記。復習に直接つながります</span></li>
+          </ul>
+        </div>
+
+        <button class="btn" id="btn-start">クイズを開始する</button>
+        <p class="fineprint">本アプリは院内勉強会の復習用教材です。実際の臨床判断は施設のプロトコルと主治医の指示に従ってください。<br>出典：骨粗鬆症の予防と治療ガイドライン2025年版</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section id="screen-quiz" class="hidden">
+    <div class="prog">
+      <div class="row">
+        <div class="lab">Question <b id="p-cur">1</b><span>/ <span id="p-tot">12</span></span></div>
+        <div class="rest" id="p-rest"></div>
+      </div>
+      <div class="bar"><div id="p-fill" style="width:0%"></div></div>
+    </div>
+
+    <div class="card">
+      <div class="vhead">
+        <span class="cat" id="q-cat"></span>
+        <span class="src" id="q-slide"></span>
+      </div>
+      <div class="vbody">
+        <div class="patient" id="q-patient"></div>
+        <p class="vtext" id="q-vignette"></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pad">
+        <p class="stem" id="q-stem"></p>
+        <div id="q-options"></div>
+      </div>
+    </div>
+
+    <div class="card hidden" id="q-explain">
+      <div class="exhead" id="ex-head">
+        <span class="icon" id="ex-icon"></span>
+        <div>
+          <div class="ttl" id="ex-title"></div>
+          <div class="sub" id="ex-sub"></div>
+        </div>
+      </div>
+      <div class="pad">
+        <div class="keypoint">
+          <div class="lbl">KEY POINT</div>
+          <p id="ex-key"></p>
+        </div>
+        <div class="block">
+          <div class="lbl">臨床的解説</div>
+          <p class="body" id="ex-body"></p>
+        </div>
+        <div class="block">
+          <div class="lbl">各選択肢の検討</div>
+          <div id="ex-notes"></div>
+        </div>
+        <div class="srcbox">
+          <div class="lbl">資料の該当箇所</div>
+          <p id="ex-src"></p>
+        </div>
+        <button class="btn" id="btn-next">次の問題へ</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESULT ============ -->
+  <section id="screen-result" class="hidden">
+    <div class="card">
+      <div class="rhead">
+        <div class="cap">RESULT</div>
+        <div class="score"><span id="r-score">0</span><span> / <span id="r-total">12</span></span></div>
+        <div class="ttl" id="r-title"></div>
+      </div>
+      <div class="pad">
+        <p class="body" id="r-body" style="margin:0;font-size:14px;line-height:1.95;color:#334155"></p>
+
+        <div class="block">
+          <div class="lbl">分野別の正答数</div>
+          <div id="r-cats"></div>
+        </div>
+
+        <div class="block">
+          <div class="lbl">設問別の結果（復習すべきスライドが分かります）</div>
+          <div id="r-rows"></div>
+        </div>
+
+        <button class="btn" id="btn-restart">もう一度挑戦する</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* =====================================================================
+   出典：勉強会資料「理学療法士が知っておきたい骨粗鬆症」全15スライド
+         （骨粗鬆症の予防と治療ガイドライン2025年版に基づく）
+   形式：短症例オムニバス 全12問／難易度：臨床経験2〜3年目
+   正答分布：A=3 / B=3 / C=3 / D=3
+   ===================================================================== */
+var QUESTIONS = [
+{
+  cat:"基礎知識：骨強度", slide:"スライド 3", group:"基礎知識",
+  patient:"68歳 女性",
+  vignette:"健診で腰椎 BMD が YAM 76% と指摘された。「基準より少し低いだけなので、骨折の心配はいらないと言われました」と話す。脆弱性骨折の既往はない。",
+  stem:"骨強度についての説明として最も適切なものはどれか。",
+  options:[
+    "骨強度は骨密度でほぼ規定されるため、YAM 76% であれば骨折リスクは平均的な範囲にあると考えてよい",
+    "骨強度は骨密度が約70%、骨質が約30%を規定しており、骨密度の数値だけでは骨折のしやすさを説明しきれない",
+    "骨粗鬆症は骨密度が YAM 70% 以下で診断されるため、76% であれば骨粗鬆症ではなく、骨折予防の介入対象にはあたらない",
+    "骨質は骨代謝マーカーで定量できるため、骨質を測定すれば骨折リスクをより正確に予測できる"
+  ],
+  answer:1,
+  key:"骨強度＝骨密度（約70%）＋骨質（約30%）。骨密度は骨強度の全部ではなく、大部分でもない。",
+  body:"資料はNIH（2000年）の定義に基づき、骨粗鬆症を「骨強度の低下を特徴とし、骨折のリスクが増大しやすくなる骨格疾患」と位置づけ、骨強度は骨密度が約70%、骨質が約30%を規定すると示している。骨質を規定する要素としては微細構造・骨代謝回転・微小骨折（マイクロクラック）・石灰化度が挙げられており、海綿骨では骨梁が細く途切れるという構造の変化が生じる。つまり骨密度が同じでも骨質が劣化していれば骨折しやすく、骨密度の数値だけで骨折リスクを語ることはできない。さらに骨粗鬆症は骨折が起こるまで症状に乏しいため、「症状がない＝問題がない」という推論も成り立たない。臨床で問題になるのは骨密度の数値そのものではなく、脆弱性骨折とその後の生活機能低下である。",
+  notes:[
+    "骨密度が骨強度の最大の規定因子であることは正しいが、「ほぼ規定される」は約70%という割合を過大に表現している。骨質の劣化は骨密度に反映されないため、骨密度が保たれていても骨折する症例は実在する。数値を過信する典型的な思考。",
+    "正解。骨密度と骨質の両方が骨強度を構成するという、資料の中核的な枠組み。",
+    "診断基準の記述としては部分的に正しく（脆弱性骨折がない場合は YAM 70% 以下で診断）、この知識自体は重要。しかし「診断がつかない＝介入対象外」という結論が誤り。骨粗鬆症の治療・予防の目的は骨折を防ぐことであり、診断の閾値を下回らない段階でも危険因子の評価と生活指導の対象になる。最も惜しい誤答。",
+    "骨代謝マーカーは骨代謝回転を反映し、骨質を規定する要素の一つを捉えることはできる。しかし微細構造・微小骨折・石灰化度といった他の要素を含めた骨質全体を定量する手段は確立していない。一部を測れることと全体を評価できることを混同している。"
+  ],
+  src:"スライド3「骨粗鬆症は『骨折リスクが増大した状態』である」（ガイドライン2025年版 p.6-8, p.80, p.224）"
+},
+{
+  cat:"基礎知識：疫学", slide:"スライド 4", group:"基礎知識",
+  patient:"72歳 男性",
+  vignette:"腰椎圧迫骨折で入院。本人から「骨粗鬆症は女性の病気だと思っていた。自分は関係ないと思って検診も受けていなかった」と話がある。",
+  stem:"疫学の理解として最も適切なものはどれか。",
+  options:[
+    "骨粗鬆症の推定患者数1,090万人のうち男性は約170万人であり、頻度は女性より低いものの無視できない数が存在する",
+    "男性の骨粗鬆症は稀であるため、本症例では多発性骨髄腫や骨軟化症などの鑑別が優先され、原発性骨粗鬆症は考えにくい",
+    "骨粗鬆症検診の受診率は男性のほうが高く、男性では早期に発見されるため重症例は少ない",
+    "推定患者数は適用する基準により1,090万人とも1,590万人とも報告されており、これは診断基準の信頼性が低いことを示している"
+  ],
+  answer:0,
+  key:"骨粗鬆症は女性に多いが、男性にも約170万人。「女性の病気」という思い込みは、男性患者の評価の機会を奪う。",
+  body:"資料は40歳以上の骨粗鬆症推定患者数を1,090万人（男性170万人、女性920万人）としている。男女比には大きな開きがあるものの、男性170万人という規模は決して小さくなく、「男性だから骨粗鬆症ではない」という前提で評価を省略すべきではない。また骨粗鬆症検診の受診率は2022年度の全国平均で5.5%（女性9.1%、男性4.7%）と低く、男性ではさらに低い。すなわち男性患者は、そもそも発見される機会が乏しいまま骨折に至りやすい構造がある。理学療法士は骨折後の患者と最も長く接する職種の一つであり、男性であっても骨粗鬆症の評価と二次性骨折予防の対象として捉える視点が求められる。",
+  notes:[
+    "正解。男性にも存在する病態であり、頻度の低さは評価を省く理由にならない。",
+    "低骨量をきたす他疾患や続発性骨粗鬆症が除外されていることは、診断基準を適用する前提として資料にも明記されており、鑑別を挙げる姿勢そのものは正しい。しかし「男性では原発性骨粗鬆症は考えにくい」という結論が誤りで、男性170万人という推定を踏まえれば原発性を除外する根拠にはならない。鑑別の姿勢は妥当でも結論が飛躍している、最も惜しい誤答。",
+    "数値の向きが逆。資料では検診受診率は女性9.1%・男性4.7%とされており、男性のほうが低い。発見の機会が少ないという事実は、むしろ男性で診断が遅れやすいことを意味する。",
+    "推計値の差は、WHO基準で算出するか日本骨代謝学会の基準で再計算するかという、適用する基準の違いによって生じている。基準が異なれば対象集団が変わるのは当然であり、診断基準の信頼性の問題ではない。数値の背景を読まずに不信を結論づけた例。"
+  ],
+  src:"スライド4「患者数は1,000万人超。骨折は高齢化とともに増加」（ガイドライン2025年版 p.9-13, p.224）"
+},
+{
+  cat:"基礎知識：診断基準", slide:"スライド 5", group:"基礎知識",
+  patient:"74歳 女性",
+  vignette:"3か月前、庭で立った姿勢からバランスを崩して転倒し、右橈骨遠位端を骨折。腰椎 BMD は YAM 76%。骨軟化症・多発性骨髄腫などの続発性要因は除外済み。",
+  stem:"骨粗鬆症の診断について最も適切なものはどれか。",
+  options:[
+    "脆弱性骨折が存在するため、骨密度の値にかかわらず骨粗鬆症と診断される",
+    "橈骨遠位端骨折は診断基準にいう脆弱性骨折に含まれないため、YAM 70% 以下でなければ骨粗鬆症とは診断されない",
+    "橈骨遠位端の脆弱性骨折があり、かつ骨密度が YAM 80% 未満であることから、骨粗鬆症と診断される",
+    "骨密度が YAM 70% を上回っているため骨粗鬆症とは診断されず、骨量減少として経過観察となる"
+  ],
+  answer:2,
+  key:"「骨密度にかかわらず診断」が適用されるのは椎体骨折と大腿骨近位部骨折のみ。他の部位は YAM 80% 未満という条件が付く。",
+  body:"資料が示す原発性骨粗鬆症の診断基準は3段構えになっている。椎体骨折または大腿骨近位部骨折という脆弱性骨折があれば骨密度にかかわらず診断、肋骨・骨盤・上腕骨近位部・橈骨遠位端・下腿骨の脆弱性骨折があれば骨密度が YAM 80% 未満で診断、脆弱性骨折がなければ骨密度が YAM 70% 以下または −2.5SD 以下で診断、という構造である。本症例は橈骨遠位端という「その他の部位」の骨折であり、受傷機転は立位からの転倒で、資料の定義する脆弱性骨折（軽微な外力＝立位からの転倒かそれ以下による非外傷性骨折）に該当する。骨密度 YAM 76% は 80% 未満を満たすため、骨粗鬆症と診断される。なお、この3段構えのいずれを適用する場合も、低骨量をきたす他疾患や続発性骨粗鬆症が除外されていることが前提になる。",
+  notes:[
+    "「脆弱性骨折があれば骨密度にかかわらず診断」という条項は実在するが、その対象は椎体骨折と大腿骨近位部骨折に限られる。骨折の有無だけを見て部位を見落とすと成立してしまう、最も惜しい誤答。基準を覚える際は「どの部位か」までを一組にして記憶する必要がある。",
+    "橈骨遠位端は資料の診断基準に「その他の部位」の脆弱性骨折として明記されており、含まれないという前提が誤り。また YAM 70% 以下という閾値は脆弱性骨折がない場合に適用されるもので、本症例には当てはまらない。",
+    "正解。部位と骨密度の条件を正しく組み合わせている。",
+    "YAM 70% 以下という閾値だけを覚えていると選びやすい。脆弱性骨折が存在する時点でこの閾値は適用対象外であり、骨折という最も重要な臨床イベントを評価から外してしまっている点が問題。"
+  ],
+  src:"スライド5「診断は『脆弱性骨折の有無』から考える」（ガイドライン2025年版 p.6, p.49-50／原発性骨粗鬆症の診断基準2012年度改訂版）"
+},
+{
+  cat:"リスク評価：危険因子", slide:"スライド 6", group:"リスクと骨折の影響",
+  patient:"67歳 女性",
+  vignette:"腰椎 BMD は YAM 78%。2年前に椎体骨折の既往あり（X線で確認）。母に大腿骨近位部骨折の既往。喫煙あり。本人は「骨密度はそれほど悪くないと言われた」と話す。",
+  stem:"この患者の骨折リスクの考え方として最も適切なものはどれか。",
+  options:[
+    "骨密度が YAM 78% と大きくは低下していないため、骨折リスクは中等度にとどまると考えてよい",
+    "挙げられた危険因子の相対危険度を単純に掛け合わせると10倍を超えるため、きわめて高リスクであると説明する",
+    "低骨密度が説明できる骨粗鬆症性骨折リスクは17%にとどまるため、本症例の評価において骨密度測定は有用でない",
+    "既存骨折は骨密度で補正しても独立した危険因子であり、骨密度の数値から想定されるよりも高いリスクとして評価する"
+  ],
+  answer:3,
+  key:"低骨密度が説明できる骨折リスクは骨粗鬆症性骨折で17%、大腿骨近位部骨折で33%。残りは既存骨折などの他の因子が担っている。",
+  body:"資料は骨折の危険因子として、骨密度が1SD低いこと（1.5〜2倍）に加え、既存骨折（約1.8倍）、X線で診断される新規の形態骨折（約3倍）、親の大腿骨近位部骨折歴（2.3倍）、転倒歴（男性1.4倍・女性1.5倍）、2型糖尿病・COPD・CKD（1.3〜1.7倍）、喫煙（1.3倍）などを列挙している。重要なのは、低骨密度が説明できる骨折リスクの割合が骨粗鬆症性骨折で17%、大腿骨近位部骨折で33%にとどまり、既存骨折の寄与はこれより大きいと明記されている点である。本症例は既存椎体骨折・家族歴・喫煙という複数の因子を持ち、骨密度の数値だけを見て判断すると実際のリスクを過小評価することになる。骨密度は評価の一要素であって、評価そのものではない。",
+  notes:[
+    "骨密度中心の思考に陥った判断。YAM 78% という値は確かに診断閾値には達していないが、既存骨折という最も重みの大きい因子を評価に反映できていない。本人の「骨密度はそれほど悪くない」という認識をそのまま追認してしまう点でも問題がある。",
+    "複数の危険因子を統合して評価しようとする方向性は正しい。しかし各因子の相対危険度は互いに独立とは限らず、単純な乗算は重複を無視してリスクを大きく過大評価する。危険因子を統合する際は FRAX のような検証された評価ツールを用いるのが原則で、数値を掛け合わせる操作は根拠を持たない。数値を扱える人ほど陥りやすい誤り。",
+    "17% という数値は資料に記載された正しい値だが、そこから「骨密度測定は有用でない」という結論は導かれない。この数値は「骨密度だけでは不十分である」ことを示すもので、「骨密度が不要である」ことを示すものではない。正しい数値から誤った結論を引き出す、数値の誤用の典型例。",
+    "正解。既存骨折の独立した寄与を踏まえ、骨密度の数値から想定されるより高いリスクとして評価する。"
+  ],
+  src:"スライド6「骨折リスクは骨密度だけでは評価できない」（ガイドライン2025年版 p.52）"
+},
+{
+  cat:"リスク評価：椎体骨折", slide:"スライド 7", group:"リスクと骨折の影響",
+  patient:"78歳 女性",
+  vignette:"変形性膝関節症で外来通院中。腰背部痛の既往はなく「骨折したことは一度もありません」と話す。身長は最大身長158cmから152cmへ6cm低下している。",
+  stem:"骨折リスク評価として最も適切な対応はどれか。",
+  options:[
+    "自覚的な骨折の既往がなく疼痛エピソードもないため、脆弱性骨折はないものとして骨密度の結果を中心に評価する",
+    "身長低下は加齢に伴う椎間板の変性でも生じうるため、椎体骨折を示唆する所見としては特異度が低く、参考所見にとどめる",
+    "形態椎体骨折の約2/3は無症候性であり、最大身長から4cm以上の低下もあることから、脊椎X線による椎体骨折の確認を提案する",
+    "最大身長から4cm以上の低下があることから椎体骨折は確定的であり、骨密度にかかわらず骨粗鬆症と診断できる"
+  ],
+  answer:2,
+  key:"椎体骨折の約2/3は無症候性。「骨折したことはない」という申告は、骨折がないことの証明にならない。",
+  body:"椎体骨折は骨粗鬆症性骨折のなかで最も頻度が高く、かつ形態椎体骨折の約2/3は無症候性に経過する。痛みを伴わない形態骨折は臨床骨折の約2倍存在するとされ、患者の自己申告だけでは骨折歴を把握できない。そのため資料は「形態椎体骨折の2/3は無症候性のため、脊椎X線での確認が望ましい」と明記している。加えて、最大身長から4cm以上の低下は椎体骨折とは独立して QOL 低下と関連する所見であり、椎体骨折を疑う手がかりにもなる。既存椎体骨折は骨密度で補正しても二次性骨折のリスクが有意に高い、強力な予測因子であるため、これを見逃すか把握するかで以後の管理方針が変わる。理学療法士は身長測定と脊柱アライメントの観察という形でこの手がかりに触れる機会が多い。",
+  notes:[
+    "椎体骨折の2/3が無症候性であるという事実を踏まえていない。患者の「骨折したことはない」という申告は、本人が自覚した骨折がないという情報にすぎず、形態椎体骨折の不在を意味しない。問診だけで骨折歴を確定しようとする危うさを示す。",
+    "加齢に伴う椎間板の菲薄化が身長低下に寄与することは事実であり、身長低下のすべてが椎体骨折によるわけではない。この指摘自体は医学的に正しい。しかし資料は4cm以上の低下を臨床的に意味のある所見として扱っており、「参考所見にとどめる」として確認に進まない判断は、無症候性椎体骨折を見逃す方向に働く。正しい知識から、消極的すぎる結論を導いた例。",
+    "正解。無症候性である可能性と身長低下という手がかりを踏まえ、X線での確認につなげる。",
+    "身長低下は椎体骨折を疑う手がかりではあるが、それ単独で骨折を確定することはできない（圧迫骨折以外の要因でも生じる）。また「椎体骨折があれば骨密度にかかわらず診断」という条項は正しいものの、その前提となる骨折の存在がX線で確認されていない。結論の方向は近いが、確定に至る手順を飛ばしている。"
+  ],
+  src:"スライド7「椎体骨折は最も多く、約2/3は痛みを伴わない」（ガイドライン2025年版 p.11, p.49-52, p.81）"
+},
+{
+  cat:"リスク評価：再骨折", slide:"スライド 6・8", group:"リスクと骨折の影響",
+  patient:"81歳 女性",
+  vignette:"大腿骨近位部骨折の手術後、回復期リハビリテーション病棟へ転棟。「手術は無事に終わったので、あとはリハビリをがんばって歩けるようになるだけですね」と話す。",
+  stem:"再骨折リスクについての理解として最も適切なものはどれか。",
+  options:[
+    "骨折後1年以内に7.6%、2年以内に11.6%が再骨折するとされ、骨折直後からの2年間はとくにリスクの高い時期として「差し迫った骨折（imminent fracture）」と呼ばれる",
+    "再骨折は骨密度が改善しない限り生じるため、薬物療法の効果が現れはじめる6か月以降にリスクが再び高まる",
+    "大腿骨近位部骨折による QOL 低下は3か月でおおむね回復するため、再骨折予防より ADL の再獲得を優先してよい",
+    "骨折直後の再骨折リスクは安静臥床に伴う骨量減少が主因であるため、離床が進めば再骨折リスクは速やかに低下する"
+  ],
+  answer:0,
+  key:"骨折直後こそ最もリスクが高い。「手術が終わった＝山を越えた」ではなく、「次の骨折に最も近い時期に入った」と読む。",
+  body:"資料は骨折後1年以内の再骨折率を7.6%、2年以内を11.6%と示し、2年以内の骨折を imminent fracture（差し迫った骨折）と呼ぶことを紹介している。つまり再骨折リスクは時間とともに緩やかに高まるのではなく、直前の骨折の直後に最も高い。この時期に介入が途切れると骨折の連鎖が続くため、FLS（骨折リエゾンサービス）では骨折患者を見つけ出して継続的に介入することが中核に据えられている。また QOL への影響も長期に及び、大腿骨近位部骨折による QOL 低下は1年後でも有意に続き、臨床椎体骨折後は18.9年後まで身体的 QOL の低下と関連するとされる。回復期リハビリテーションの場面では ADL 再獲得が中心課題になるが、それと並行して再骨折予防（栄養・運動・転倒予防・薬物治療の継続）を組み立てることが求められる。",
+  notes:[
+    "正解。再骨折リスクが骨折直後に最も高いという時間構造を押さえている。",
+    "骨密度の改善と再骨折リスクの推移を直線的に対応させた誤り。骨密度が改善する前の時期こそリスクが高いというのが imminent fracture の概念であり、時期の見積もりが逆になっている。薬物療法の開始が重要であることは正しいが、その根拠づけが誤っている。",
+    "大腿骨近位部骨折後の QOL 低下は1年後でも有意に続くと資料に示されており、3か月での回復という前提が誤り。ただし回復期リハビリテーション病棟で ADL 再獲得を重視するという実務感覚とは合致するため、選びたくなる選択肢。ADL 再獲得と再骨折予防は二者択一ではなく、並行して進めるべき課題である。",
+    "安静臥床による骨量減少は実在し、早期離床が重要であることも正しい。しかし再骨折リスクが骨折後2年間にわたって高いという事実は、離床だけでは説明できない。既存骨折そのものが独立した危険因子（約1.8倍）であり、離床によって消えるものではない。部分的に正しい機序で全体を説明しようとした例。"
+  ],
+  src:"スライド6「骨折リスクは骨密度だけでは評価できない」／スライド8「骨折は長期にQOLを低下させる」（ガイドライン2025年版 p.52, p.80-81）"
+},
+{
+  cat:"予防：骨量のライフコース", slide:"スライド 9", group:"予防",
+  patient:"42歳 女性",
+  vignette:"趣味のマラソンで走行距離を増やしてから無月経が続いている。腰痛の相談で来院。「まだ40代なので骨のことは気にしなくていいですよね」と話す。",
+  stem:"骨量の推移についての説明として最も適切なものはどれか。",
+  options:[
+    "最大骨量には20歳頃に到達し、その後も30〜50歳までは緩やかに増加するため、現時点で骨量減少を心配する必要は少ない",
+    "骨量は30〜50歳まで有意には増加せず、月経不順があると年約2%の骨量低下をきたすため、現時点から対策を講じる必要がある",
+    "骨量が問題になるのは閉経後10年間に約15%低下することであり、閉経前の段階では骨量の大きな変化は生じない",
+    "骨量獲得に最も効果的なのは初経前後（10〜14歳）であり、その時期を過ぎた成人では運動による骨への効果は期待できない"
+  ],
+  answer:1,
+  key:"骨量は30〜50歳で「増えない」。しかも月経不順があれば年約2%ずつ減る。閉経を待たずに対策が必要になる。",
+  body:"資料は骨量のライフコースを、成長期（最大骨量 PBM に20歳頃到達）、成人期（30〜40歳代に約1%/年の低下、骨量は30〜50歳まで有意に増加しない）、閉経後（10年間で約15%低下）、高齢期（65歳で YAM 75%＝−1.5SD、75歳で70%以下＝−2.5SD）という4期に整理している。成人期のポイントは「増えないこと」と「月経不順があると年約2%低下すること」の2点で、本症例は運動性の無月経によってエストロゲン分泌が低下し、後者に該当する可能性が高い。40代で閉経前であることは安心材料にならず、むしろこの時期の骨量を保つことが、閉経後と高齢期の骨量を規定する。本人の「まだ40代だから」という認識を、具体的な数値とともに修正することが介入の出発点になる。",
+  notes:[
+    "最大骨量に20歳頃到達するという前半は正しいが、後半が誤り。資料は「骨量は30〜50歳まで有意に増加しない」と明記しており、増加するという前提が成り立たない。前半が正しいために全体を正しいと判断しやすい構造になっている。",
+    "正解。成人期の骨量の推移と、月経不順の影響の両方を踏まえている。",
+    "閉経後10年間に約15%低下するという数値は正しく、閉経が骨量減少の大きな転換点であることも事実。しかし「閉経前は大きな変化が生じない」という部分が誤りで、成人期にも約1%/年の低下があり、月経不順があればその倍の速度で進む。正しい知識の適用範囲を広げすぎた例。",
+    "骨量獲得に最も効果的なのが初経前後であること、ジャンプなど垂直荷重のハイインパクト運動が有効であることはいずれも資料の記載どおり。しかし「成人では効果が期待できない」という結論は誤りで、同じ資料の CQ3 では成人・高齢者に対する運動療法が骨密度への効果とともに提案されている。資料内の別のスライドと矛盾する結論になっている。"
+  ],
+  src:"スライド9「骨の『貯金』と『減らさない工夫』は生涯続く」（ガイドライン2025年版 p.60-64）"
+},
+{
+  cat:"予防：栄養と体重", slide:"スライド 10", group:"予防",
+  patient:"70歳 女性",
+  vignette:"身長152cm・体重46kg（BMI 19.9）。「太ると膝に悪いので、体重は増やさないようにしています」と話す。骨によいと聞いてカルシウムのサプリメントを1日1,500mg服用している。",
+  stem:"生活指導として最も優先度が高いものはどれか。",
+  options:[
+    "BMI 25以上では日本人女性で椎体骨折リスクが64%増加するため、体重を増やさないという現在の方針を支持する",
+    "カルシウムは700〜800mg/日が提案量であり1,500mgは過剰摂取にあたるため、まずサプリメントの中止を指示する",
+    "カルシウムの摂取量は提案量を上回っているため、不足しがちなビタミンDとたんぱく質の摂取を追加するよう勧める",
+    "65歳以上の目標BMIは21.5〜24.9であり、やせ（BMI 20）は大腿骨近位部骨折リスクを95%増加させるため、管理栄養士と連携して体重を増やす方向での栄養調整を提案する"
+  ],
+  answer:3,
+  key:"骨にとっての「やせ」は肥満より危険。BMI 20 で大腿骨近位部骨折リスクは95%増、BMI 25以上の椎体骨折64%増を上回る。",
+  body:"資料は65歳以上の目標 BMI を21.5〜24.9とし、やせ（BMI 20）では大腿骨近位部骨折リスクが95%増加すること、一方で BMI 25以上も日本人女性で椎体骨折が64%増加することを示している。本症例の BMI 19.9 は目標域を下回り、しかも本人が意図的に体重増加を避けているため、介入しなければ低体重が持続する。低体重は骨量だけでなくサルコペニアやフレイルとも結びつき、転倒リスクを介して骨折リスクをさらに高める。膝への配慮という本人の動機は尊重しつつ、骨折予防の観点から目標 BMI を共有し、管理栄養士と連携してたんぱく質（体重1kgあたり1g程度）を中心に摂取量を調整していくのが筋道になる。カルシウムの過剰摂取も確かに注意事項だが、優先順位としては体重の問題が先に立つ。",
+  notes:[
+    "BMI 25以上で椎体骨折リスクが64%増加するという数値自体は資料の記載どおりで正しい。しかし本症例の BMI は19.9 でやせ側にあり、適用すべき方向が逆。正しい数値を、当てはまらない患者に当てはめた典型例で、数値を覚えているほど選びやすい。",
+    "カルシウムの提案量が700〜800mg/日であること、サプリメントの過剰摂取に注意すべきことは資料に明記されており、問題意識としては妥当。ただし摂取量の調整は医師・管理栄養士と協議すべき事項で、理学療法士が中止を「指示」する立場にはない。また優先順位としても体重の問題が先行する。",
+    "ビタミンD（15〜20μg/日に対し実際の摂取は約6.2μg）とたんぱく質の不足は実際に重要な論点であり、この提案自体は有用。しかし最大の問題である低体重に触れておらず、「太らないようにしている」という本人の方針を結果的に追認してしまう。惜しいが、優先順位の判断で劣る。",
+    "正解。低体重という最優先の課題を、職種連携の枠組みのなかで扱っている。"
+  ],
+  src:"スライド10「中高年の予防は、栄養・体重・生活習慣が基本」（ガイドライン2025年版 p.68-69, p.82-84）"
+},
+{
+  cat:"運動療法：CQ3の読み方", slide:"スライド 11", group:"運動療法・転倒予防",
+  patient:"69歳 女性",
+  vignette:"骨粗鬆症と診断され外来リハビリを開始。「運動をすれば骨折は防げるのでしょうか。薬は飲みたくないので運動でなんとかしたいです」と尋ねられた。",
+  stem:"ガイドラインに基づく説明として最も適切なものはどれか。",
+  options:[
+    "運動療法は骨折予防のために「推奨」されており、エビデンスの強さは A である",
+    "椎体骨折数への効果は RR 0.56（95%CI 0.30〜1.04）と報告されており、点推定値が0.56であることから椎体骨折を約44%減らす効果が確認されている",
+    "運動療法は骨折予防のために「提案」されるが、大腿骨近位部骨折を主要評価項目とした研究はなく、椎体骨折数への効果も統計学的には有意でない",
+    "最適な運動の種類・強度・時間・期間が未確立である以上、現時点で運動療法を積極的に勧める根拠はない"
+  ],
+  answer:2,
+  key:"95%CI が 1 をまたぐ（0.30〜1.04）＝有意ではない。点推定値が大きく見えても「効果が確認された」とは言えない。",
+  body:"資料は CQ3「骨粗鬆症患者の骨折予防に運動療法は推奨されるか？」に対し、合意率100%・エビデンスの強さ B で「運動療法を実施することを提案する」と整理している。同時にエビデンスの限界として、最適な運動の種類・強度・時間・期間が未確立であること、大腿骨近位部骨折を主要評価項目とした研究がないこと、椎体骨折数への効果が有意でないこと（RR 0.56, 95%CI 0.30〜1.04）、有害事象が不明確であることを明記している。95%信頼区間が 1 をまたぐということは「差がない」という可能性を否定できないという意味であり、点推定値が 0.56 と小さく見えても効果が確認されたとは言えない。患者への説明としては、骨密度への効果や転倒予防の効果は期待できる一方、骨折そのものを減らす直接的な根拠には限界があること、薬物療法の代替にはならないことを率直に伝えるのが誠実な対応になる。",
+  notes:[
+    "推奨度とエビデンスの強さをいずれも誤っている。資料では推奨は「提案」、エビデンスの強さは B である。合意率100%という数値が目を引くため「強い推奨」と読み替えてしまいやすいが、合意率は専門家間の一致度を示すもので、推奨の強さやエビデンスの質とは別の指標である。",
+    "点推定値のみを見て信頼区間を無視した、統計の読み方としての典型的な誤り。95%CI の上限が 1.04 で 1 を超えている以上、効果がない可能性を否定できない。資料自身も「椎体骨折数への効果は有意でない」と明記している。数値が大きく見えるぶん、最も惹かれやすい誤答。",
+    "正解。推奨の強さと、根拠の限界の両方を正確に伝えている。",
+    "エビデンスの限界についての記述は資料どおりで正しいが、そこから「勧める根拠はない」という結論は導かれない。同じ CQ3 で合意率100%をもって運動療法が提案されており、限界があることと推奨されないことは別である。限界を過大に評価して、提供すべき介入を控えてしまう方向の誤り。"
+  ],
+  src:"スライド11「運動療法は治療の柱。ただし効果の根拠には限界がある」（ガイドライン2025年版 p.63, p.68-69, p.85-86）"
+},
+{
+  cat:"運動療法：RR表の解釈", slide:"スライド 12", group:"運動療法・転倒予防",
+  patient:"80歳 女性",
+  vignette:"この1年で2回の転倒歴がある骨粗鬆症患者。通所リハビリでの運動プログラムを設計するにあたり、資料の運動の種類別 RR 表（転倒率・転倒者数・骨折者数）を参照している。",
+  stem:"この表の解釈として最も適切なものはどれか。",
+  options:[
+    "筋力増強運動（単独）の転倒率 RR は 1.14 であり、転倒を増やすことが示されているため、骨粗鬆症患者には行うべきでない",
+    "バランス訓練・課題指向的機能訓練は骨折者数 RR 0.44 と最も大きな減少を示しており、転倒・骨折予防の中核に据えるのが妥当である",
+    "ダンスは転倒率 RR 1.34 と最も高く、転倒を有意に増加させることが示されているため、骨粗鬆症患者には禁忌とすべきである",
+    "歩行訓練（単独）は骨折者数 RR 0.66 で転倒率 RR 1.14 より小さいため、歩行訓練を単独でプログラムの中心に据えるのが効率的である"
+  ],
+  answer:1,
+  key:"RR の数値そのものより、95%信頼区間が 1 を含むかどうか（有意か非有意か）を先に見る。非有意は「効果がない」でも「悪化させる」でもなく「わからない」。",
+  body:"資料の表では、バランス訓練・課題指向的機能訓練が転倒率 RR 0.76・骨折者数 RR 0.44（転倒率24%減・骨折者数56%減）、複合的な運動が転倒率 RR 0.66（34%減）といずれも有意な減少を示す一方、筋力増強運動（単独）や歩行訓練（単独）、ダンスについては有意差が示されていない。ここで重要なのは、有意でない RR の値を効果の大小として読んではならないという点である。RR 1.14 は「転倒を14%増やす」ことを意味せず、推定の幅が広くて効果の方向を特定できないことを示している。また骨折者数 RR 0.44 のように異なるアウトカム間で数値を比較することも、評価している事象が違う以上は適切でない。したがってプログラム設計では、有意な効果が示されているバランス訓練・課題指向的機能訓練と複合的な運動を中核に据え、筋力増強や歩行はその構成要素として組み込むという形になる。資料は「転倒リスクの高い高齢者や骨粗鬆症の高齢者で、運動の有効性が高い」とも述べており、本症例はまさにその対象にあたる。",
+  notes:[
+    "RR 1.14 が有意でないことを読み落とし、「転倒を増やす」と断定している。加えて筋力増強運動は、単独での効果が明らかでないというだけで、複合的な運動の構成要素としての価値は否定されていない。骨密度への効果（レジスタンス運動）という別の観点からも、行うべきでないという結論にはならない。",
+    "正解。有意な効果が示されている介入を中核に据えるという、表の正しい使い方。",
+    "RR 1.34 も有意差が示されていないため、「有意に増加させる」という読み方が成り立たない。さらに、効果が明らかでないことと禁忌であることは全く別の判断であり、二段構えで飛躍している。数値が 1 を大きく超えると危険だと感じやすい、直感に引きずられた誤答。",
+    "異なるアウトカム（骨折者数と転倒率）の RR を直接比較している点がまず誤り。加えて資料は筋力増強運動・歩行訓練の「単独」での効果は明らかでないと明記しており、単独で中心に据える根拠がない。歩行は複合的な運動の一要素として位置づけるのが妥当。"
+  ],
+  src:"スライド12「転倒・骨折を減らす運動は、バランス訓練と複合運動」（ガイドライン2025年版 p.70-71, p.85-86）"
+},
+{
+  cat:"転倒予防：多面的介入", slide:"スライド 13", group:"運動療法・転倒予防",
+  patient:"83歳 男性",
+  vignette:"脳卒中後の軽度左片麻痺、起立性低血圧あり、降圧薬を内服中。自宅は2階建てで階段に手すりがなく、屋内ではスリッパを使用。この半年で2回転倒している。",
+  stem:"転倒予防の方針として最も適切なものはどれか。",
+  options:[
+    "在宅での複数要素の運動は転倒率 RR 0.68 と最も効果が大きいため、運動プログラムの導入に資源を集中する",
+    "家屋環境の評価と修正は転倒率 RR 0.81 と効果が最も小さいため、優先度を下げて差し支えない",
+    "ヒッププロテクターは大腿骨近位部骨折の予防効果が期待できるため、転倒を繰り返す本症例では第一選択として導入する",
+    "内的要因（片麻痺・起立性低血圧・服薬）と外的要因（手すりのない階段・スリッパ）の双方が修正可能な危険因子として特定されており、リスク評価に基づく多面的介入として同時に扱う"
+  ],
+  answer:3,
+  key:"転倒予防の原則は「修正可能な危険因子を個別に特定して修正する」こと。RR の大小ランキングで介入を選ぶのではない。",
+  body:"資料は転倒の危険因子を内的要因（歩行障害、認知機能障害、脳卒中、パーキンソン病、末梢神経障害、フレイル、起立性低血圧、視覚障害など）と外的要因（合わない履物、滑りやすい床、つまずきやすい環境、手すりのない階段、照明の不備）に分けて示し、介入のポイントとして「修正可能な危険因子を個別に特定し、修正する」ことを挙げている。本症例は片麻痺・起立性低血圧という内的要因と、手すりのない階段・スリッパという外的要因がいずれも明確に特定されており、どちらか一方に絞る理由がない。資料が示す各介入の転倒率 RR（在宅での運動0.68、グループ運動0.71、リスク評価に基づく多面的介入0.76、家屋環境の評価と修正0.81）はいずれも有意な減少を示しており、数値の大小は「どれか一つを選ぶための順位」ではない。また家屋環境の修正は行動変容と組み合わせることで転倒を減少させる（IRR 0.74）とされており、単独で評価した数値より高い効果が期待できる。",
+  notes:[
+    "RR 0.68 が最も小さい値であることは正しいが、数値のランキングだけで方針を決めている。本症例では手すりのない階段とスリッパという、修正すれば確実に減らせる外的要因が明確に存在しており、これを放置して運動だけに資源を集中するのは多面的介入の原則に反する。数値に忠実であろうとして、目の前の患者から離れた例。",
+    "RR の大小で優先度を決める発想は上と同じだが、こちらはより明確に危険である。家屋環境の修正は行動変容との組み合わせで IRR 0.74 を示しており、また本症例では階段に手すりがないという具体的かつ修正可能な問題が特定されている。集団レベルの平均値を、個別の患者の優先順位にそのまま適用してはならない。",
+    "ヒッププロテクターは大腿骨近位部骨折の予防手段として存在するが、資料は「遵守率が課題」と明記しており、第一選択に据えられるものではない。また転倒そのものを減らす介入ではないため、修正可能な危険因子が複数特定されている本症例では優先順位が低い。転倒を防ぐことと、転倒しても骨折しないようにすることを混同している。",
+    "正解。内的要因と外的要因の双方を特定し、多面的介入として同時に扱う。"
+  ],
+  src:"スライド13「転倒予防は、リスク評価に基づく多面的介入で」（ガイドライン2025年版 p.70-72）"
+},
+{
+  cat:"FLS：骨折の連鎖を断つ", slide:"スライド 14", group:"FLS",
+  patient:"79歳 女性",
+  vignette:"大腿骨近位部骨折の術後。退院調整の段階に入った。院内には FLS（骨折リエゾンサービス）のチームがあり、多職種カンファレンスが予定されている。",
+  stem:"このチームにおける理学療法士の関わり方として最も適切なものはどれか。",
+  options:[
+    "骨折リスク評価のうえ、栄養・運動（転倒予防を含む）・薬物治療の三本柱で評価と指導を行う枠組み（OLS-7）に沿って、運動・転倒予防の部分を担いながら多職種で情報を共有する",
+    "FLS の5つの i のうち Intervention（治療開始）は医師の役割であるため、理学療法士は Integration（フォローアップ）の段階から関与する",
+    "FLS の中心は薬物治療の開始と継続にあるため、理学療法士は骨折部位の機能回復に専念することで役割を果たす",
+    "骨粗鬆症マネージャー® は医師・看護師・薬剤師を対象とした認定であり、理学療法士は対象外であるため FLS チームの正式な構成員にはなれない"
+  ],
+  answer:0,
+  key:"理学療法士は骨粗鬆症マネージャー® の認定対象職種。FLS の中で「運動・転倒予防」という明確な持ち場がある。",
+  body:"FLS（骨折リエゾンサービス）は、Identification（骨折患者を見つけ出す）、Investigation（二次性骨折リスクを評価する）、Intervention（適切な介入を行う）、Integration（患者をフォローアップする）、Information（教育と情報提供を行う）という5つの i で構成される。資料は理学療法士の関わりどころとして、骨折後は早期に再骨折しやすく（1年以内7.6%、2年以内11.6%）継続的な介入が必要であること、FLS 導入により治療率の向上・二次性骨折の減少・死亡率の低下が示されていること、理学療法士が骨粗鬆症マネージャー® の認定対象職種であること、2022年度診療報酬改定で大腿骨近位部骨折への FLS 介入に二次性骨折予防継続管理料が新設されたことを挙げている。実務の枠組みとしては OLS-7 が示されており、骨折リスク評価のうえ、栄養・運動（転倒予防を含む）・薬物治療の三本柱で評価と指導を行う。理学療法士はこのうち運動と転倒予防を直接担い、同時に栄養状態や服薬アドヒアランスの気づきを他職種へ渡す位置にいる。",
+  notes:[
+    "正解。OLS-7 の枠組みのなかで自らの持ち場を担いつつ、多職種へ情報を渡す。",
+    "5つの i を役割分担の固定的な区分として読んだ誤り。Intervention の中心が薬物治療の開始であることは事実だが、運動療法と転倒予防もまた介入であり、理学療法士はこの段階から関与する。また Identification の段階でも、身長低下や転倒歴といった気づきを通じて貢献しうる。",
+    "薬物治療が FLS の重要な柱であることは正しく、機能回復が理学療法の中核であることも正しい。しかし「専念する」と範囲を限定した時点で、再骨折予防という FLS の目的から外れる。骨折部位が治っても、転倒すれば次の骨折が起こる。部分的に正しい記述を組み合わせて、誤った結論に至る構造になっている。",
+    "資料に「理学療法士は骨粗鬆症マネージャー® の認定対象職種」と明記されており、事実関係が誤り。認定資格の有無にかかわらず多職種チームへの参画は可能であり、資格を参画の前提条件として扱っている点も誤っている。"
+  ],
+  src:"スライド14「理学療法士も『骨折の連鎖』を断つチームの一員」（ガイドライン2025年版 p.52, p.223-229）"
+}
+];
+
+var FEEDBACK = [
+  {min:11, title:"ガイドラインを臨床判断に落とし込めています",
+   body:"診断基準の構造も、エビデンスの限界も、数値の読み方も正確に扱えています。次は担当患者のカルテで「この人の骨折リスクを決めている因子は何か」を言語化する練習へ。勉強会で解説する側に回れるレベルです。"},
+  {min:9, title:"基礎は十分に固まっています",
+   body:"取りこぼした設問は「なぜ他の選択肢が惜しいのか」に注目して復習を。とくに、正しい数値を誤った方向に適用していないか、信頼区間を見落としていないかを確認してください。"},
+  {min:5, title:"知識はあるが、使い分けの整理が必要です",
+   body:"用語や数値は覚えているものの、「どの患者に・どの条件で」適用するかが判断に反映しきれていない場面がありました。スライド5（診断基準の3段構え）、スライド11・12（有意か非有意か）を読み直すのが近道です。"},
+  {min:0, title:"まずは診断基準と危険因子から",
+   body:"骨粗鬆症の診断は「脆弱性骨折の有無」と「その部位」で分岐します。そして骨折リスクは骨密度だけでは決まりません。スライド5とスライド6の2枚を確実に押さえてから、もう一度挑戦してみてください。"}
+];
+
+/* ---------------- state ---------------- */
+var idx = 0, selected = null, results = [];
+var $ = function(id){ return document.getElementById(id); };
+var KEY = ["A","B","C","D"];
+
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+/* ---------------- start screen ---------------- */
+(function buildTopics(){
+  var html = "";
+  for (var i=0;i<QUESTIONS.length;i++){
+    html += '<div class="topic"><span class="n">'+(i+1)+'</span><span class="t">'+esc(QUESTIONS[i].cat)+'</span></div>';
+  }
+  $("topic-list").innerHTML = html;
+  $("p-tot").textContent = QUESTIONS.length;
+  $("r-total").textContent = QUESTIONS.length;
+})();
+
+function show(name){
+  ["start","quiz","result"].forEach(function(s){
+    $("screen-"+s).classList.toggle("hidden", s!==name);
+  });
+  window.scrollTo({top:0, behavior:"instant"});
+}
+
+/* ---------------- render question ---------------- */
+function render(){
+  var q = QUESTIONS[idx];
+  $("p-cur").textContent = idx+1;
+  $("p-rest").textContent = "残り "+(QUESTIONS.length-idx-1)+" 問";
+  $("p-fill").style.width = ((idx+1)/QUESTIONS.length*100)+"%";
+
+  $("q-cat").textContent = q.cat;
+  $("q-slide").textContent = q.slide;
+  $("q-patient").textContent = q.patient;
+  $("q-vignette").textContent = q.vignette;
+  $("q-stem").textContent = q.stem;
+
+  var box = $("q-options");
+  box.innerHTML = "";
+  q.options.forEach(function(opt,i){
+    var b = document.createElement("button");
+    b.className = "opt";
+    b.innerHTML = '<span class="k">'+KEY[i]+'</span><span class="txt">'+esc(opt)+'</span>';
+    b.addEventListener("click", function(){ choose(i); });
+    box.appendChild(b);
+  });
+
+  $("q-explain").classList.add("hidden");
+  selected = null;
+}
+
+/* ---------------- answer ---------------- */
+function choose(i){
+  if (selected !== null) return;
+  selected = i;
+  var q = QUESTIONS[idx];
+  var ok = (i === q.answer);
+  results[idx] = ok;
+
+  var btns = $("q-options").children;
+  for (var n=0;n<btns.length;n++){
+    btns[n].classList.add("locked");
+    btns[n].disabled = true;
+    if (n === q.answer) btns[n].classList.add("correct");
+    else if (n === i) btns[n].classList.add("wrong");
+    else btns[n].classList.add("dim");
+  }
+
+  $("ex-head").className = "exhead " + (ok ? "ok" : "ng");
+  $("ex-icon").textContent = ok ? "✓" : "✕";
+  $("ex-title").textContent = ok ? "正解" : "不正解";
+  $("ex-sub").textContent = "正答：" + KEY[q.answer];
+  $("ex-key").textContent = q.key;
+  $("ex-body").textContent = q.body;
+  $("ex-src").textContent = q.src;
+
+  var nb = $("ex-notes");
+  nb.innerHTML = "";
+  q.notes.forEach(function(note,n){
+    var d = document.createElement("div");
+    d.className = "onote" + (n===q.answer ? " is-ans" : "");
+    d.innerHTML = '<span class="k">'+KEY[n]+'</span><p>'+esc(note)+'</p>';
+    nb.appendChild(d);
+  });
+
+  $("btn-next").textContent = (idx+1 >= QUESTIONS.length) ? "結果を見る" : "次の問題へ";
+  $("q-explain").classList.remove("hidden");
+  $("q-explain").scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+/* ---------------- result ---------------- */
+function renderResult(){
+  var score = results.filter(Boolean).length;
+  $("r-score").textContent = score;
+
+  var fb = FEEDBACK.find(function(f){ return score >= f.min; });
+  $("r-title").textContent = fb.title;
+  $("r-body").textContent = fb.body;
+
+  // group summary
+  var groups = [];
+  QUESTIONS.forEach(function(q,i){
+    var g = groups.find(function(x){ return x.name === q.group; });
+    if (!g){ g = {name:q.group, n:0, ok:0}; groups.push(g); }
+    g.n++; if (results[i]) g.ok++;
+  });
+  var gh = "";
+  groups.forEach(function(g){
+    var full = (g.ok === g.n);
+    gh += '<div class="cat-sum" style="background:'+(full?"#effcfb":"#f8fafc")+';border-color:'+(full?"#7fd3cd":"#e2e8f0")+'">'
+        + '<span class="nm">'+esc(g.name)+'</span>'
+        + '<span class="sc" style="color:'+(full?"#0d7d78":"#475569")+'">'+g.ok+' / '+g.n+'</span></div>';
+  });
+  $("r-cats").innerHTML = gh;
+
+  // per-question rows
+  var rh = "";
+  QUESTIONS.forEach(function(q,i){
+    rh += '<div class="rrow">'
+        + '<span class="mk" style="color:'+(results[i]?"#0d7d78":"#e11d48")+'">'+(results[i]?"✓":"✕")+'</span>'
+        + '<span class="qn">Q'+(i+1)+'</span>'
+        + '<span class="ct">'+esc(q.cat)+'</span>'
+        + '<span class="sl">'+esc(q.slide)+'</span></div>';
+  });
+  $("r-rows").innerHTML = rh;
+
+  show("result");
+}
+
+/* ---------------- events ---------------- */
+$("btn-start").addEventListener("click", function(){
+  idx = 0; selected = null; results = [];
+  render(); show("quiz");
+});
+$("btn-next").addEventListener("click", function(){
+  if (idx+1 >= QUESTIONS.length){ renderResult(); }
+  else { idx++; render(); window.scrollTo({top:0, behavior:"smooth"}); }
+});
+$("btn-restart").addEventListener("click", function(){
+  idx = 0; selected = null; results = [];
+  show("start");
+});
+</script>
+</body>
+</html>
